@@ -1,0 +1,27 @@
+{
+  "name": "crypto-curious",
+  "version": "1.0.0",
+  "description": "Crypto Curious Web App",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kozer2/Crypto-Curious.git"
+  },
+  "author": "Ben Hemann and Jean McMahon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kozer2/Crypto-Curious/issues"
+  },
+  "homepage": "https://github.com/Kozer2/Crypto-Curious#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "pg": "^8.5.1",
+    "superagent": "^6.1.0"
+  }
+}
