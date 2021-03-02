@@ -26,13 +26,13 @@ app.set('view engine', 'ejs');
 
 app.get('/', homeRoute);
 
-function homeRoute (req, res) {
+function homeRoute(req, res) {
   res.render('index.ejs');
 }
 
 // client.connect()
 //   .then(() => {
-     app.listen(PORT, () => console.log(`SERVER up on PORT : ${PORT}`));
+app.listen(PORT, () => console.log(`SERVER up on PORT : ${PORT}`));
 //   })
 //   .catch(console.error);
 
@@ -42,22 +42,22 @@ function homeRoute (req, res) {
 app.get('/apitest', apiTest);
 
 
-function apiTest( req, res ) {
+function apiTest(req, res) {
   console.log('path triggered');
   const apiKey = process.env.CRYPTO_KEY;
   const url = "https://api.binance.com/api/v3/ticker/24hr?symbol=LTCBTC"
   const queryParams = {
-    key:apiKey, quantity:1, price: 0.1, recvWindow:5000, timestamp:1499827319559
+    key: apiKey, quantity: 1, price: 0.1, recvWindow: 5000, timestamp: 1499827319559
   };
   superagent.get(url)
-  //.query(queryParams)
-  .then( returned => {
-    console.log('***the body:', returned.body);
-  }).catch(error => {
-    console.log("***ERROR:", error);
-    res.status(500).send('Error In Query');
+    //.query(queryParams)
+    .then(returned => {
+      console.log('***the body:', returned.body);
+    }).catch(error => {
+      console.log("***ERROR:", error);
+      res.status(500).send('Error In Query');
 
-  })
+    })
 }
 
 
