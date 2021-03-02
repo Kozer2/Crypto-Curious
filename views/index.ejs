@@ -14,7 +14,7 @@
     </head>
     <body>
         <%- include('partials/header.ejs'); %>
-        <form id="check-crypto">
+        <form id="check-crypto" action="/search" method="POST">
             <fieldset> 
                 <legend>Search For A Crypto Currency Price</legend>
                 <label for="symbol">Enter Coin Ticker Symbol</label>
