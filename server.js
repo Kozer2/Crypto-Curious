@@ -26,11 +26,14 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', homeRoute);
+app.get('/aboutUs', aboutUsPage);
 
 function homeRoute(req, res) {
   res.render('index.ejs');
 }
-
+function aboutUsPage(req, res){
+  res.render('pages/aboutUs.ejs');
+}
 // client.connect()
 //   .then(() => {
 app.listen(PORT, () => console.log(`SERVER up on PORT : ${PORT}`));
