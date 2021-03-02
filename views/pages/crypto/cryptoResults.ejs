@@ -14,7 +14,17 @@
     </head>
     <body>
         <%- include('../../partials/header.ejs'); %>
-        <p>Test</p>
+        <Section>
+
+        <h3>Here Are Your Results</h3>
+        <h4>Coin queried</h4>
+        <%= symbolObj.symbol %>
+        <h4>Current price</h4>
+        <%= symbolObj.price %>
+        <h4>Amount you can buy</h4>
+        <%= symbolObj.amount %>
+                
+        </Section>
         
         <script src="" async defer></script>
     </body>
