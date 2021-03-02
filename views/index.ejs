@@ -15,16 +15,42 @@
     <body>
         <%- include('partials/header.ejs'); %>
 
-        <h4>If you are not sure of your coins symbol, please refer to Binance.us symbol documentation, many coins are 6-7 characters long, and end in BTC. Example: ETHBTC is Etherum.</h4>
+        <h4>If you are not sure of your coins symbol.</h4>
 
 
         <form id="checkCrypto" action="/search" method="POST">
             <fieldset> 
                 <legend>Search For A Crypto Currency Price</legend>
-                <label for="symbol">Enter Coin Ticker Symbol</label>
-                <input name="symbol" type="text" required/>
+                <label for="symbol1">Coin 1 Symbol</label>
+                <input name="symbol1" type="text" required/>
                 <label for="usdAmount">How much would you like to "invest"?</label>
                 <input name="usdAmount" type="text">
+                <br>
+                <label for="symbol2">Coin 2 Symbol</label>
+                <input name="symbol2" type="text" />
+                <label for="usdAmount">How much would you like to "invest"?</label>
+                <input name="usdAmount" type="text">
+                <br>
+                <label for="symbol3">Coin 3 Symbol</label>
+                <input name="symbol3" type="text" />
+                <label for="usdAmount">How much would you like to "invest"?</label>
+                <input name="usdAmount" type="text">
+                <br>
+                <label for="symbol4">Coin 4 Symbol</label>
+                <input name="symbol4" type="text" />
+                <label for="usdAmount">How much would you like to "invest"?</label>
+                <input name="usdAmount" type="text">
+                <br>
+                <label for="symbol5">Coin 5 Symbol</label>
+                <input name="symbol5" type="text" />
+                <label for="usdAmount">How much would you like to "invest"?</label>
+                <input name="usdAmount" type="text">
+                
+
+
+
+
+
                 <button type="submit">Submit</button>
             </fieldset>
         </form>

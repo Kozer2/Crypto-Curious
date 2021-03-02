@@ -57,14 +57,15 @@ function onFormSubmit(req, res){
   console.log('USD', cryptoAmount);
 
   const apiKey = process.env.CRYPTO_KEY;
-  const url = `https://api.binance.com/api/v3/ticker/24hr?symbol=${cryptoSymbol}`;
+  const url = `https://api.binance.com/api/v3/ticker/price?symbol=${cryptoSymbol}USDT`;
   console.log('url', url);
   superagent.get(url)
   //.query(queryParams)
     .then( returned => {
+      console.log('body', returned.body);
       const symbolObj = {
-        price: returned.body.lastPrice,
-        change: returned.body.priceChangePercent,
+        price: returned.body.symbol,
+        change: returned.body.price,
         amount: cryptoAmount
 
       };
