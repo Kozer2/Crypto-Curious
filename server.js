@@ -27,7 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get('/', homeRoute);
 
-function homeRoute (req, res) {
+function homeRoute(req, res) {
   res.render('index.ejs');
 }
 
@@ -73,33 +73,6 @@ function onFormSubmit(req, res){
 
     });
 } // end onFormSubmit
-
-
-
-
-
-
-
-
-
-
-// function apiFunction( req, res ) {
-//   console.log('path triggered');
-//   const apiKey = process.env.CRYPTO_KEY;
-//   const url = 'https://api.binance.com/api/v3/ticker/24hr?symbol=LTCBTC';
-//   const queryParams = {
-//     key:apiKey, quantity:1, price: 0.1, recvWindow:5000, timestamp:1499827319559
-//   };
-//   superagent.get(url)
-//   //.query(queryParams)
-//     .then( returned => {
-//       console.log('***the body:', returned.body);
-//     }).catch(error => {
-//       console.log('***ERROR:', error);
-//       res.status(500).send('Error In Query');
-
-//     });
-// }
 
 
 
