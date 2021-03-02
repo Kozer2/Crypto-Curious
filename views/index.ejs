@@ -14,14 +14,18 @@
     </head>
     <body>
         <%- include('partials/header.ejs'); %>
-        <form id="check-crypto" action="/search" method="POST">
+
+        <h4>If you are not sure of your coins symbol, please refer to Binance.us symbol documentation, many coins are 6-7 characters long, and end in BTC. Example: ETHBTC is Etherum.</h4>
+
+
+        <form id="checkCrypto" action="/search" method="POST">
             <fieldset> 
                 <legend>Search For A Crypto Currency Price</legend>
                 <label for="symbol">Enter Coin Ticker Symbol</label>
-                <input id="symbol" type="text" required/>
-                <label for="usd-amount">How much would you like to "invest"?</label>
-                <input id="usd-amount" type="text">
-                <input type="submit" name="Submit">
+                <input name="symbol" type="text" required/>
+                <label for="usdAmount">How much would you like to "invest"?</label>
+                <input name="usdAmount" type="text">
+                <button type="submit">Submit</button>
             </fieldset>
         </form>
         

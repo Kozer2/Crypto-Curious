@@ -6,11 +6,12 @@ require('dotenv').config();
 // Application Dependencies
 const express = require('express');
 
-//const cors = require('cors');
 
 //const pg = require('pg');
 //const client = new pg.Client(process.env.DATABASE_URL);
 const superagent = require('superagent'); //<<--will go in module
+const { request } = require('express');
+
 
 
 // Database Setup
@@ -22,7 +23,7 @@ console.log('Crypto Server is running on port: ', PORT);
 const app = express();
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
-
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/', homeRoute);
 
@@ -32,33 +33,73 @@ function homeRoute (req, res) {
 
 // client.connect()
 //   .then(() => {
-     app.listen(PORT, () => console.log(`SERVER up on PORT : ${PORT}`));
+app.listen(PORT, () => console.log(`SERVER up on PORT : ${PORT}`));
 //   })
 //   .catch(console.error);
 
 // Our Dependencies - modules
 
 //server paths
-app.get('/apitest', apiTest);
+// app.get('/apitest', apiFunction);
 
 
-function apiTest( req, res ) {
-  console.log('path triggered');
+// Post for API form
+app.post('/search', onFormSubmit);
+
+// function for form submission
+function onFormSubmit(req, res){
+  const cryptoSymbol = req.body.symbol.toUpperCase();
+  const cryptoAmount = req.body.usdAmount;
+  console.log('symbol', cryptoSymbol);
+  console.log('USD', cryptoAmount);
+
   const apiKey = process.env.CRYPTO_KEY;
-  const url = "https://api.binance.com/api/v3/ticker/24hr?symbol=LTCBTC"
-  const queryParams = {
-    key:apiKey, quantity:1, price: 0.1, recvWindow:5000, timestamp:1499827319559
-  };
+  const url = `https://api.binance.com/api/v3/ticker/24hr?symbol=${cryptoSymbol}`;
+  console.log('url', url);
   superagent.get(url)
   //.query(queryParams)
-  .then( returned => {
-    console.log('***the body:', returned.body);
-  }).catch(error => {
-    console.log("***ERROR:", error);
-    res.status(500).send('Error In Query');
+    .then( returned => {
+      const symbolObj = {
+        price: returned.body.lastPrice,
+        change: returned.body.priceChangePercent,
+        amount: cryptoAmount
 
-  })
-}
+      };
+      res.render('pages/crypto/cryptoResults.ejs');
+      console.log(symbolObj);
+    }).catch(error => {
+      // console.log('***ERROR:', error);
+      res.status(500).send('Error, Coin symbol was not correct.');
+
+    });
+} // end onFormSubmit
+
+
+
+
+
+
+
+
+
+
+// function apiFunction( req, res ) {
+//   console.log('path triggered');
+//   const apiKey = process.env.CRYPTO_KEY;
+//   const url = 'https://api.binance.com/api/v3/ticker/24hr?symbol=LTCBTC';
+//   const queryParams = {
+//     key:apiKey, quantity:1, price: 0.1, recvWindow:5000, timestamp:1499827319559
+//   };
+//   superagent.get(url)
+//   //.query(queryParams)
+//     .then( returned => {
+//       console.log('***the body:', returned.body);
+//     }).catch(error => {
+//       console.log('***ERROR:', error);
+//       res.status(500).send('Error In Query');
+
+//     });
+// }
 
 
 
