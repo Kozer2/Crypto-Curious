@@ -5,7 +5,8 @@ require('dotenv').config();
 
 // Application Dependencies
 const express = require('express');
-const cors = require('cors');
+
+//const cors = require('cors');
 
 //const pg = require('pg');
 //const client = new pg.Client(process.env.DATABASE_URL);
@@ -19,6 +20,15 @@ const superagent = require('superagent'); //<<--will go in module
 const PORT = process.env.PORT || 3001 || 3002 || 3003;
 console.log('Crypto Server is running on port: ', PORT);
 const app = express();
+app.use(express.static('public'));
+app.set('view engine', 'ejs');
+
+
+app.get('/', homeRoute);
+
+function homeRoute (req, res) {
+  res.render('index.ejs');
+}
 
 // client.connect()
 //   .then(() => {
@@ -30,6 +40,7 @@ const app = express();
 
 //server paths
 app.get('/apitest', apiTest);
+
 
 function apiTest( req, res ) {
   console.log('path triggered');

@@ -7,10 +7,24 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="base.css">
+        <link rel="stylesheet" href="modules.css">
+        <link rel="stylesheet" href="layout.css">
     </head>
     <body>
-        <p>Test</p>
+        <%- include('partials/header.ejs'); %>
+        <form id="check-crypto">
+            <fieldset> 
+                <legend>Search For A Crypto Currency Price</legend>
+                <label for="symbol">Enter Coin Ticker Symbol</label>
+                <input id="symbol" type="text" required/>
+                <label for="usd-amount">How much would you like to "invest"?</label>
+                <input id="usd-amount" type="text">
+                <input type="submit" name="Submit">
+            </fieldset>
+        </form>
+        
         
         <script src="" async defer></script>
     </body>
