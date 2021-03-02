@@ -51,7 +51,7 @@ app.post('/search', onFormSubmit);
 
 // function for form submission
 function onFormSubmit(req, res){
-  const cryptoSymbol = req.body.symbol.toUpperCase();
+  const cryptoSymbol = req.body.symbol1.toUpperCase();
   const cryptoAmount = req.body.usdAmount;
   console.log('symbol', cryptoSymbol);
   console.log('USD', cryptoAmount);
