@@ -64,12 +64,12 @@ function onFormSubmit(req, res){
     .then( returned => {
       console.log('body', returned.body);
       const symbolObj = {
-        price: returned.body.symbol,
-        change: returned.body.price,
+        symbol: cryptoSymbol,
+        price: returned.body.price,
         amount: cryptoAmount
 
       };
-      res.render('pages/crypto/cryptoResults.ejs');
+      res.render('pages/crypto/cryptoResults.ejs', {symbolObj: symbolObj});
       console.log(symbolObj);
     }).catch(error => {
       // console.log('***ERROR:', error);
