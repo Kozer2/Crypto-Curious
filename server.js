@@ -19,6 +19,7 @@ const { request } = require('express');
 
 //Application Setup
 const PORT = process.env.PORT || 3001 || 3002 || 3003;
+// const apiKey = process.env.CRYPTO_KEY;
 console.log('Crypto Server is running on port: ', PORT);
 const app = express();
 app.use(express.static('public'));
@@ -28,10 +29,12 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', homeRoute);
 app.get('/aboutUs', aboutUsPage);
 
+
+
 function homeRoute(req, res) {
   res.render('index.ejs');
 }
-function aboutUsPage(req, res){
+function aboutUsPage(req, res) {
   res.render('pages/aboutUs.ejs');
 }
 // client.connect()
@@ -49,41 +52,59 @@ app.listen(PORT, () => console.log(`SERVER up on PORT : ${PORT}`));
 // Post for API form
 app.post('/search', onFormSubmit);
 
+
+
+
+
 // function for form submission
-function onFormSubmit(req, res){
-  const cryptoSymbol = req.body.symbol1.toUpperCase();
+function onFormSubmit(req, res) {
+  const cryptoSymbol1 = req.body.symbol1.toUpperCase();
   const cryptoSymbol2 = req.body.symbol2.toUpperCase();
-  const cryptoAmount = req.body.usdAmount;
+  const cryptoAmount1 = req.body.usdAmount;
   const cryptoAmount2 = req.body.usdAmount2;
-  console.log('symbol', cryptoSymbol);
-  console.log('USD', cryptoAmount);
+  console.log('symbol', cryptoSymbol1);
+  console.log('USD', cryptoAmount1);
   console.log('symbol2', cryptoSymbol2);
   console.log('USD', cryptoAmount2);
 
 
-
-  const apiKey = process.env.CRYPTO_KEY;
-  const url = `https://api.binance.com/api/v3/ticker/price?symbol=${cryptoSymbol}USDT`;
-  console.log('url', url);
-  superagent.get(url)
-  //.query(queryParams)
-    .then( returned => {
-      console.log('body', returned.body);
-      const symbolObj = {
-        symbol: cryptoSymbol,
-        price: returned.body.price,
-        amount: cryptoAmount
-
-      };
-      res.render('pages/crypto/cryptoResults.ejs', {symbolObj: symbolObj});
-      console.log(symbolObj);
-    }).catch(error => {
-      // console.log('***ERROR:', error);
-      res.status(500).send('Error, Coin symbol was not correct.');
-
+  let checkPrice = cryptoSymbol => superagent
+    .get(`https://api.binance.com/api/v3/ticker/price?symbol=${cryptoSymbol}USDT`)
+    .then(response => response.body);
+  Promise.all([
+    checkPrice(cryptoSymbol1), checkPrice(cryptoSymbol2)
+  ]).then(results => {
+    let cryptoObj = results.map(result =>{
+      console.log(result);
     });
-} // end onFormSubmit
+  })
+    .catch(error => {
+      console.log('***ERROR:', error);
+      res.status(500).send('Error, Coin symbol was not correct.');
+    });
 
+
+
+  // console.log('url', url);
+  // superagent.get(url)
+  //   //.query(queryParams)
+  //   .then(returned => {
+  //     console.log('body', returned.body);
+  //     const symbolObj = {
+  //       symbol: cryptoSymbol,
+  //       price: returned.body.price,
+  //       amount: cryptoAmount
+
+  //   };
+  //   symbolObj.boughtAmount = symbolObj.amount / symbolObj.price;
+  //   res.render('pages/crypto/cryptoResults.ejs', { symbolObj: symbolObj });
+  //   console.log(symbolObj);
+  // }).catch(error => {
+  //   // console.log('***ERROR:', error);
+  //   res.status(500).send('Error, Coin symbol was not correct.');
+
+  // });
+} // end onFormSubmit
 
 
 // function errorHandler(error, request, response) {
@@ -99,4 +120,3 @@ function onFormSubmit(req, res){
 //     notFound: true,
 //   });
 // }
-
