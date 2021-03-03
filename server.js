@@ -78,6 +78,7 @@ function onFormSubmit(req, res) {
       return {
         symbol: result.symbol,
         price: result.price,
+        amount: amount,
         bought: amount / result.price
       };
     });
