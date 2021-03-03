@@ -52,9 +52,15 @@ app.post('/search', onFormSubmit);
 // function for form submission
 function onFormSubmit(req, res){
   const cryptoSymbol = req.body.symbol1.toUpperCase();
+  const cryptoSymbol2 = req.body.symbol2.toUpperCase();
   const cryptoAmount = req.body.usdAmount;
+  const cryptoAmount2 = req.body.usdAmount2;
   console.log('symbol', cryptoSymbol);
   console.log('USD', cryptoAmount);
+  console.log('symbol2', cryptoSymbol2);
+  console.log('USD', cryptoAmount2);
+
+
 
   const apiKey = process.env.CRYPTO_KEY;
   const url = `https://api.binance.com/api/v3/ticker/price?symbol=${cryptoSymbol}USDT`;
