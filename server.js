@@ -53,7 +53,14 @@ app.listen(PORT, () => console.log(`SERVER up on PORT : ${PORT}`));
 app.post('/search', onFormSubmit);
 
 
+// function onFormSubmit2(req, res) {
+//   const crytoSymbol1 = req.body.symbol1.toUpperCase();
+//   const cryptoSymbol2 = req.body.symbol2.toUpperCase();
+//   const cryptoAmount1 = req.body.usdAmount;
+//   const cryptoAmount2 = req.body.usdAmount2;
+//   const cryptoSymbol3 = req.body.
 
+// }
 
 
 // function for form submission
@@ -62,11 +69,11 @@ function onFormSubmit(req, res) {
   const cryptoSymbol2 = req.body.symbol2.toUpperCase();
   const cryptoAmount1 = req.body.usdAmount;
   const cryptoAmount2 = req.body.usdAmount2;
-  console.log('symbol', cryptoSymbol1);
-  console.log('USD', cryptoAmount1);
-  console.log('symbol2', cryptoSymbol2);
-  console.log('USD', cryptoAmount2);
-
+  // console.log('symbol', cryptoSymbol1);
+  // console.log('USD', cryptoAmount1);
+  // console.log('symbol2', cryptoSymbol2);
+  // console.log('USD', cryptoAmount2);
+  let symbolArray = [];
 
   let checkPrice = cryptoSymbol => superagent
     .get(`https://api.binance.com/api/v3/ticker/price?symbol=${cryptoSymbol}USDT`)
@@ -74,13 +81,18 @@ function onFormSubmit(req, res) {
   Promise.all([
     checkPrice(cryptoSymbol1), checkPrice(cryptoSymbol2)
   ]).then(results => {
-    let cryptoObj = results.map(result =>{
-      console.log(result);
-    });
+      results.map( item => {
+       //console.log(item.symbol);
+       symbolArray.push(item);
+       console.log('this is symbol array at 0', symbolArray[0]);
+       console.log('this is symbol at 1: ', symbolArray[1]);
+     })
+    console.log('symbol array outside of map', symbolArray);
+    console.log('this is symobol array at 0 out of map', symbolArray[1]);
   })
     .catch(error => {
       console.log('***ERROR:', error);
-
+      
       res.status(500).send('Error, Coin symbol was not correct.');
     });
 
