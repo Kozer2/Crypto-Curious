@@ -7,18 +7,18 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="reset.css">
-        <link rel="stylesheet" href="base.css">
-        <link rel="stylesheet" href="modules.css">
-        <link rel="stylesheet" href="layout.css">
+        <link rel="stylesheet" href="/styles/reset.css">
+        <link rel="stylesheet" href="/styles/base.css">
+        <link rel="stylesheet" href="/styles/layout.css">
+        <link rel="stylesheet" href="/styles/modules.css">
     </head>
     <body>
         <%- include('partials/header.ejs'); %>
 
-        <h4>If you are not sure of your coins symbol.</h4>
+        <h4>Enter your coin symbol in the Symbol box and enter the amount of USD that you have to buy the coin.</h4>
 
 
-        <form id="checkCrypto" action="/search" method="POST">
+        <form class="form1" id="checkCrypto" action="/search" method="POST">
             <fieldset> 
                 <legend>Search For A Crypto Currency Price</legend>
                 <label for="symbol1">Coin 1 Symbol</label>

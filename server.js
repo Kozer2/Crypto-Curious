@@ -69,7 +69,6 @@ function onFormSubmit(req, res){
         amount: cryptoAmount
       };
       symbolObj.boughtAmount = symbolObj.amount / symbolObj.price;
-    
       res.render('pages/crypto/cryptoResults.ejs', {symbolObj: symbolObj});
       console.log(symbolObj);
     }).catch(error => {
