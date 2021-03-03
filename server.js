@@ -57,6 +57,7 @@ app.post('/search', onFormSubmit);
 
 
 // function for form submission
+
 function onFormSubmit(req, res) {
   const cryptoSymbol1 = req.body.symbol1.toUpperCase();
   const cryptoSymbol2 = req.body.symbol2.toUpperCase();
@@ -80,6 +81,7 @@ function onFormSubmit(req, res) {
   })
     .catch(error => {
       console.log('***ERROR:', error);
+
       res.status(500).send('Error, Coin symbol was not correct.');
     });
 
