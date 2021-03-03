@@ -10,7 +10,6 @@ const express = require('express');
 //const pg = require('pg');
 //const client = new pg.Client(process.env.DATABASE_URL);
 const superagent = require('superagent'); //<<--will go in module
-const { request } = require('express');
 
 
 
@@ -67,32 +66,36 @@ app.post('/search', onFormSubmit);
 function onFormSubmit(req, res) {
   const cryptoSymbol1 = req.body.symbol1.toUpperCase();
   const cryptoSymbol2 = req.body.symbol2.toUpperCase();
-  const cryptoAmount1 = req.body.usdAmount;
-  const cryptoAmount2 = req.body.usdAmount2;
-  // console.log('symbol', cryptoSymbol1);
-  // console.log('USD', cryptoAmount1);
-  // console.log('symbol2', cryptoSymbol2);
-  // console.log('USD', cryptoAmount2);
-  let symbolArray = [];
+  const cryptoSymbol3 = req.body.symbol3.toUpperCase();
+  const cryptoSymbol4 = req.body.symbol4.toUpperCase();
+  const cryptoSymbol5 = req.body.symbol5.toUpperCase();
+  const cryptoAmounts = [req.body.usdAmount1, req.body.usdAmount2, req.body.usdAmount3, req.body.usdAmount4, req.body.usdAmount5];
+
+
 
   let checkPrice = cryptoSymbol => superagent
     .get(`https://api.binance.com/api/v3/ticker/price?symbol=${cryptoSymbol}USDT`)
     .then(response => response.body);
   Promise.all([
-    checkPrice(cryptoSymbol1), checkPrice(cryptoSymbol2)
+    checkPrice(cryptoSymbol1), checkPrice(cryptoSymbol2), checkPrice(cryptoSymbol3), checkPrice(cryptoSymbol4), checkPrice(cryptoSymbol5)
   ]).then(results => {
-      results.map( item => {
-       //console.log(item.symbol);
-       symbolArray.push(item);
-       console.log('this is symbol array at 0', symbolArray[0]);
-       console.log('this is symbol at 1: ', symbolArray[1]);
-     })
-    console.log('symbol array outside of map', symbolArray);
-    console.log('this is symobol array at 0 out of map', symbolArray[1]);
+    let symbols = results.map( (result, i) => {
+      let amount = cryptoAmounts[i];
+      console.log('amount', amount);
+      console.log('symbols', result.symbol);
+      console.log('Price', result.price);
+      return {
+        symbol: result.symbol,
+        price: result.price,
+        bought: amount / result.price
+      };
+    });
+    console.log('symbols', symbols);
+    res.render('pages/crypto/cryptoResults.ejs',{symbols});
   })
     .catch(error => {
       console.log('***ERROR:', error);
-      
+
       res.status(500).send('Error, Coin symbol was not correct.');
     });
 
