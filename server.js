@@ -57,7 +57,6 @@ app.post('/search', onFormSubmit);
 
 
 // function for form submission
-
 function onFormSubmit(req, res) {
   const cryptoSymbol1 = req.body.symbol1.toUpperCase();
   const cryptoSymbol2 = req.body.symbol2.toUpperCase();
