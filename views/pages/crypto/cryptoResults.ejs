@@ -5,18 +5,17 @@
         <Section>
 
         <h3>Here Are Your Results</h3>
-        <h4>Coin queried</h4>
-        <%= symbolObj.symbol1 %>
-        <h4>Current price</h4>
-        <%= symbolObj.price1 %>
-        <h4>Amount you can buy</h4>
-
-        <h4>Coin queried</h4>
-        <%= symbolObj.symbol2 %>
-        <h4>Current price</h4>
-        <%= symbolObj.price2 %>
-        <h4>Amount you can buy</h4>
-        <%= symbolObj.boughtAmount2 %>
+        <% symbols.forEach( symbol => { %>
+            <li class="symbolItem">
+              Coin Symbol: <%= symbol.symbol %>
+            </li>
+            <li class="priceItem">
+             Coin Price: <%= symbol.price %>
+            </li>
+            <li class="priceItem"> 
+                The amount you entered would have purchased: <%= symbol.bought %> coins.
+            </li>
+        <% }) %>
                 
         </Section>
         
