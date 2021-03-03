@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="base.css">
+        <link rel="stylesheet" href="modules.css">
+        <link rel="stylesheet" href="layout.css">
+    </head>
+    <body>
+        <%- include('../../partials/header.ejs'); %>
+        <Section>
+
+        <h3>Here Are Your Results</h3>
+        <h4>Coin queried</h4>
+        <%= symbolObj.symbol %>
+        <h4>Current price</h4>
+        <%= symbolObj.price %>
+        <h4>Amount you can buy</h4>
+        <%= symbolObj.amount %>
+                
+        </Section>
+        
+        <script src="" async defer></script>
+    </body>
+</html>
