@@ -7,8 +7,8 @@ require('dotenv').config();
 const express = require('express');
 
 
-//const pg = require('pg');
-//const client = new pg.Client(process.env.DATABASE_URL);
+const pg = require('pg');
+const client = new pg.Client(process.env.DATABASE_URL);
 const superagent = require('superagent'); //<<--will go in module
 
 
@@ -36,11 +36,11 @@ function homeRoute(req, res) {
 function aboutUsPage(req, res) {
   res.render('pages/aboutUs.ejs');
 }
-// client.connect()
-//   .then(() => {
-app.listen(PORT, () => console.log(`SERVER up on PORT : ${PORT}`));
-//   })
-//   .catch(console.error);
+client.connect()
+  .then(() => {
+    app.listen(PORT, () => console.log(`SERVER up on PORT : ${PORT}`));
+  })
+  .catch(console.error);
 
 // Our Dependencies - modules
 
@@ -55,6 +55,7 @@ app.post('/search', onFormSubmit);
 
 // function for form submission
 function onFormSubmit(req, res) {
+  const userName = req.body.userName;
   const cryptoSymbol1 = req.body.symbol1.toUpperCase();
   const cryptoSymbol2 = req.body.symbol2.toUpperCase();
   const cryptoSymbol3 = req.body.symbol3.toUpperCase();
@@ -70,7 +71,7 @@ function onFormSubmit(req, res) {
   Promise.all([
     checkPrice(cryptoSymbol1), checkPrice(cryptoSymbol2), checkPrice(cryptoSymbol3), checkPrice(cryptoSymbol4), checkPrice(cryptoSymbol5)
   ]).then(results => {
-    let symbols = results.map( (result, i) => {
+    let symbols = results.map((result, i) => {
       let amount = cryptoAmounts[i];
       console.log('amount', amount);
       console.log('symbols', result.symbol);
@@ -82,7 +83,25 @@ function onFormSubmit(req, res) {
       };
     });
     console.log('symbols', symbols);
-    res.render('pages/crypto/cryptoResults.ejs',{symbols});
+    const query = 'INSERT INTO crypto_currency (user_name, symbol_name1, usd_price1, symbol_name2, usd_price2, symbol_name3, usd_price3, symbol_name4, usd_price4, symbol_name5, usd_price5, time_date_stamp) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)';
+    const sqlArray = [userName,
+      cryptoSymbol1, symbols[0].price,
+      cryptoSymbol2, symbols[1].price,
+      cryptoSymbol3, symbols[2].price,
+      cryptoSymbol4, symbols[3].price,
+      cryptoSymbol5, symbols[4].price,
+      new Date()];
+
+    return client.query(query, sqlArray)
+      .then(() => {
+        res.render('pages/crypto/cryptoResults.ejs', { symbols });
+      }
+      )
+      .catch(error => {
+        console.log('***ERROR:', error);
+        res.status(500).send(error);
+      });
+
   })
     .catch(error => {
       console.log('***ERROR:', error);
