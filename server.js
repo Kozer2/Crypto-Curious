@@ -52,15 +52,6 @@ app.listen(PORT, () => console.log(`SERVER up on PORT : ${PORT}`));
 app.post('/search', onFormSubmit);
 
 
-// function onFormSubmit2(req, res) {
-//   const crytoSymbol1 = req.body.symbol1.toUpperCase();
-//   const cryptoSymbol2 = req.body.symbol2.toUpperCase();
-//   const cryptoAmount1 = req.body.usdAmount;
-//   const cryptoAmount2 = req.body.usdAmount2;
-//   const cryptoSymbol3 = req.body.
-
-// }
-
 
 // function for form submission
 function onFormSubmit(req, res) {

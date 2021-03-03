@@ -1,5 +1,37 @@
-img{
-    height: 300px;
-    width: 300px;
+* {
+    box-sizing: border-box;
+  }
+  
+body{
+    background-image: url("../../images/cryptoCode.jpg");
+    background-size: 100%;
 }
 
+/* img{
+    height: 300px;
+    width: 300px;
+} */
+
+/* Style the counter cards */
+
+.cards {
+    display: flex;
+    justify-content: space-between;
+    justify-items: auto;
+ }
+
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  padding: 30px;
+  text-align: center;
+  background-color: 
+
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
