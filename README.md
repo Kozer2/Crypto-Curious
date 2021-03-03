@@ -10,7 +10,7 @@ Our stretch goals included converting the USD price to other currencies so users
 This website uses a Crypto Exchange API to pull coin data when the user searches for a given coin symbol. 
 
 ### Problem Domain
-Our problem domain was 
+Our problem domain was displaying up to 5 cryptocurriencies and display the amount each is worth in USD.
 
 
 
