@@ -13,7 +13,7 @@ const superagent = require('superagent'); //<<--will go in module
 
 
 
-// Database Setup
+
 
 
 //Application Setup
@@ -27,6 +27,27 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get('/', homeRoute);
 app.get('/aboutUs', aboutUsPage);
+app.get('/cryptoBank', getCryptoFromBank);
+
+function getCryptoFromBank(req, res){
+  const SQL = `
+    SELECT *
+    FROM crypto_currency
+  `;
+  client.query(SQL)
+    .then( results => {
+      const {rowCount, rows} = results;
+      console.log('Database Stuff', rows, rowCount);
+      res.render('pages/crypto/cryptoBank.ejs', {
+        crypto: rows
+      });
+    })
+    .catch(error => {
+      console.log('***ERROR:', error);
+
+      res.status(500).send('Error, Nothing found in DB');
+    });
+} // end getCryptoFromBank function
 
 
 
@@ -44,8 +65,7 @@ client.connect()
 
 // Our Dependencies - modules
 
-//server paths
-// app.get('/apitest', apiFunction);
+
 
 
 // Post for API form
@@ -82,7 +102,7 @@ function onFormSubmit(req, res) {
         amount: amount,
         bought: amount / result.price
       };
-    });
+    }); // Database Setup
     console.log('symbols', symbols);
     const query = 'INSERT INTO crypto_currency (user_name, symbol_name1, usd_price1, symbol_name2, usd_price2, symbol_name3, usd_price3, symbol_name4, usd_price4, symbol_name5, usd_price5, time_date_stamp) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)';
     const sqlArray = [userName,
