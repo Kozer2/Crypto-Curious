@@ -1,0 +1,54 @@
+<%- include('../../partials/head.ejs'); %>
+<body>
+    <%- include('../../partials/header.ejs'); %>
+
+    <Section>
+
+        <h3>Here Are the Coins in the Bank</h3>
+        <% crypto.forEach( crypto => { %>
+            <li class="userName">
+              Username: <%= crypto.user_name %>
+            </li>
+            <br>
+            <li>Time Searched: <%= crypto.time_date_stamp %></li>
+            <br>
+            <li class="symbolName">
+             Coin: <%= crypto.symbol_name1 %>
+            </li>
+            <li class="price"> 
+                Price: <%= crypto.usd_price1 %> 
+            </li>
+            <br>
+            <li class="symbolName">
+                Coin: <%= crypto.symbol_name2 %>
+            </li>
+            <li class="price"> 
+                Price: <%= crypto.usd_price2 %> 
+            </li>
+            <br>
+            <li class="symbolName">
+                Coin: <%= crypto.symbol_name3 %>
+            </li>
+            <li class="price"> 
+                Price: <%= crypto.usd_price3 %> 
+            </li>
+            <br>
+            <li class="symbolName">
+                Coin: <%= crypto.symbol_name4 %>
+            </li>
+            <li class="price"> 
+                Price: <%= crypto.usd_price4 %> 
+            </li>
+            <br>
+            <li class="symbolName">
+                Coin: <%= crypto.symbol_name5 %>
+            </li>
+            <li class="price"> 
+                Price: <%= crypto.usd_price5 %> 
+            </li>
+            <br>
+               
+            
+        <% }) %>
+                
+        </Section>
