@@ -8,6 +8,7 @@ const express = require('express');
 
 
 const pg = require('pg');
+pg.defaults.ssl = process.env.NODE_ENV === 'production' && { rejectUnauthorized: false };
 const client = new pg.Client(process.env.DATABASE_URL);
 const superagent = require('superagent'); //<<--will go in module
 
