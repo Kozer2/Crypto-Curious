@@ -94,15 +94,16 @@ function onFormSubmit(req, res) {
   ]).then(results => {
     let symbols = results.map((result, i) => {
       let amount = cryptoAmounts[i];
-      console.log('amount', amount);
-      console.log('symbols', result.symbol);
-      console.log('Price', result.price);
+      // console.log('amount', amount);
+      // console.log('symbols', result.symbol);
+      // console.log('Price', result.price);
       return {
         symbol: result.symbol,
         price: result.price,
         amount: amount,
         bought: amount / result.price
       };
+
     }); // Database Setup
     console.log('symbols', symbols);
     const query = 'INSERT INTO crypto_currency (user_name, symbol_name1, usd_price1, symbol_name2, usd_price2, symbol_name3, usd_price3, symbol_name4, usd_price4, symbol_name5, usd_price5, time_date_stamp) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)';
@@ -123,6 +124,7 @@ function onFormSubmit(req, res) {
         console.log('***ERROR:', error);
         res.status(500).send(error);
       });
+
 
   })
     .catch(error => {

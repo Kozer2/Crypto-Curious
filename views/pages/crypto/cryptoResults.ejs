@@ -5,18 +5,23 @@
         <Section>
 
         <h3>Here Are Your Results</h3>
+        <ul id="result-ul">
         <% symbols.forEach( symbol => { %>
-            <li class="symbolItem">
-              Coin Symbol: <%= symbol.symbol %>
-            </li>
-            <li class="priceItem">
-             Coin Price: <%= symbol.price %>
-            </li>
-            <li class="priceItem"> 
-                Your  $<%=symbol.amount %> would have bought: <%= symbol.bought %> coins.
-            </li>
+
+            <div class="result">
+                <li class="symbolItem">
+                Coin Symbol: <%= symbol.symbol %>
+                </li>
+                <li class="priceItem">
+                Coin Price: <%= symbol.price %>
+                </li>
+                <li class="priceItem"> 
+                    The amount you entered would have purchased: <%= symbol.bought %> coins.
+                </li>
+            </div>
+
         <% }) %>
-                
+        </ul>
         </Section>
         
         <script src="" async defer></script>

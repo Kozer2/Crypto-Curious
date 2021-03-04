@@ -4,9 +4,10 @@ body{
     background: rgb(4, 1, 7);
     color: greenyellow;
     justify-content: center;
+    font-family: monospace;
+    background-image: url('../images/lineGraph.jpg');
 }
 button{
     background-color: black;
     color: greenyellow;
-    
 }
