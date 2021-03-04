@@ -32,3 +32,22 @@
     width:70%;
     background-image:url('../images/blockchain-3448529__340.webp');
 }
+
+
+.bankForm{
+    text-align: center;
+}
+.report{
+    background-color: rgb(128, 128, 223);
+    color:brown;
+    margin: 5px;
+    
+}
+
+button a{
+    text-decoration: none;
+}
+
+.details li{
+    font-size: 35px;
+}
