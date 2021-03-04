@@ -1,54 +1,67 @@
 <%- include('../../partials/head.ejs'); %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <body>
     <%- include('../../partials/header.ejs'); %>
 
     <Section>
 
+
         <h3>Here Are the Coins in the Bank</h3>
+       
         <% crypto.forEach( crypto => { %>
             <li class="userName">
-              Username: <%= crypto.user_name %>
+              <button class="show"> Username: <%= crypto.user_name %>  </button>
             </li>
-            <br>
-            <li>Time Searched: <%= crypto.time_date_stamp %></li>
-            <br>
-            <li class="symbolName">
-             Coin: <%= crypto.symbol_name1 %>
-            </li>
-            <li class="price"> 
-                Price: <%= crypto.usd_price1 %> 
-            </li>
-            <br>
-            <li class="symbolName">
-                Coin: <%= crypto.symbol_name2 %>
-            </li>
-            <li class="price"> 
-                Price: <%= crypto.usd_price2 %> 
-            </li>
-            <br>
-            <li class="symbolName">
-                Coin: <%= crypto.symbol_name3 %>
-            </li>
-            <li class="price"> 
-                Price: <%= crypto.usd_price3 %> 
-            </li>
-            <br>
-            <li class="symbolName">
-                Coin: <%= crypto.symbol_name4 %>
-            </li>
-            <li class="price"> 
-                Price: <%= crypto.usd_price4 %> 
-            </li>
-            <br>
-            <li class="symbolName">
-                Coin: <%= crypto.symbol_name5 %>
-            </li>
-            <li class="price"> 
-                Price: <%= crypto.usd_price5 %> 
-            </li>
-            <br>
-               
-            
+            <div class="<%= crypto.user_name %>">
+                <br>
+                <li class="one">Time Searched: <%= crypto.time_date_stamp %></li>
+                <br>
+                <li class="symbolName">
+                    Coin: <%= crypto.symbol_name1 %>
+                </li>
+                <li class="price"> 
+                    Price: <%= crypto.usd_price1 %> 
+                </li>
+                <br>
+                <li class="symbolName">
+                    Coin: <%= crypto.symbol_name2 %>
+                </li>
+                <li class="price"> 
+                    Price: <%= crypto.usd_price2 %> 
+                </li>
+                <br>
+                <li class="symbolName">
+                    Coin: <%= crypto.symbol_name3 %>
+                </li>
+                <li class="price"> 
+                    Price: <%= crypto.usd_price3 %> 
+                </li>
+                <br>
+                <li class="symbolName">
+                    Coin: <%= crypto.symbol_name4 %>
+                </li>
+                <li class="price"> 
+                    Price: <%= crypto.usd_price4 %> 
+                </li>
+                <br>
+                <li class="symbolName">
+                    Coin: <%= crypto.symbol_name5 %>
+                </li>
+                <li class="price"> 
+                    Price: <%= crypto.usd_price5 %> 
+                </li>
+                <br>
+            </div>
+            <script>
+                $(document).ready(function(){
+                    $("div").hide();
+                  $(".show").click(function(){
+                    $(".<%= crypto.user_name %>").show();
+                  });
+                });
+                </script>
         <% }) %>
                 
         </Section>
+        <script src="js/app.js"></script>
+</body>
