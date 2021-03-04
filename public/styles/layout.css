@@ -1,7 +1,7 @@
 .form1{
     display: flexbox;
     background-color: rgb(0, 0, 0);
-    color: rgb(245, 35, 35);
+    color: rgb(211, 211, 211);
     font-weight: bold;
     text-shadow: 1px 1px black;
     justify-content: center;
