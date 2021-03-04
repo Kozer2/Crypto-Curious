@@ -2,41 +2,43 @@
 <body>
     <%- include('partials/header.ejs'); %>
 
-
         <h4>Enter your coin symbol in the Symbol box and enter the amount of USD that you have to buy the coin.</h4>
 
 
         <form class="form1" id="checkCrypto" action="/search" method="POST">
             <fieldset> 
                 <legend>Search For A Crypto Currency Price</legend>
-                <label for="symbol1">Coin 1 Symbol</label>
-                <input name="symbol1" type="text" required/>
-                <label for="usdAmount1">How much would you like to "invest"?</label>
-                <input name="usdAmount1" type="text">
-                <br>
-                <label for="symbol2">Coin 2 Symbol</label>
-                <input name="symbol2" type="text" value = "btc"/>
-                <label for="usdAmount2">How much would you like to "invest"?</label>
-                <input name="usdAmount2" type="text">
-                <br>
-                 <label for="symbol3">Coin 3 Symbol</label>
-                <input name="symbol3" type="text" value = "btc"/>
-                <label for="usdAmount3">How much would you like to "invest"?</label>
-                <input name="usdAmount3" type="text">
-                <br>
-                <label for="symbol4">Coin 4 Symbol</label>
-                <input name="symbol4" type="text" value = "btc"/>
-                <label for="usdAmount4">How much would you like to "invest"?</label>
-                <input name="usdAmount4" type="text">
-                <br>
-                <label for="symbol5">Coin 5 Symbol</label>
-                <input name="symbol5" type="text" value = "btc"/>
-                <label for="usdAmount5">How much would you like to "invest"?</label>
-                <input name="usdAmount5" type="text">
-                
-
-
-                <button type="submit">Submit</button>
+                <div class="field">
+                    <label for="symbol1">Coin 1 Symbol</label>
+                    <input name="symbol1" type="text" required/><br>
+                    <label for="usdAmount1">How much would you like to "invest"?</label>
+                    <input name="usdAmount1" type="text"><br>
+                </div>
+                <div class="field">
+                    <label for="symbol2">Coin 2 Symbol</label>
+                    <input name="symbol2" type="text" value = "btc"/><br>
+                    <label for="usdAmount2">How much would you like to "invest"?</label>
+                    <input name="usdAmount2" type="text"><br>
+                </div>
+                <div class="field">
+                    <label for="symbol3">Coin 3 Symbol</label>
+                    <input name="symbol3" type="text" value = "btc"/><br>
+                    <label for="usdAmount3">How much would you like to "invest"?</label>
+                    <input name="usdAmount3" type="text"><br>
+                </div>
+                <div class="field">
+                    <label for="symbol4">Coin 4 Symbol</label>
+                    <input name="symbol4" type="text" value = "btc"/><br>
+                    <label for="usdAmount4">How much would you like to "invest"?</label>
+                    <input name="usdAmount4" type="text"><br>
+                </div>
+                <div class="field">
+                    <label for="symbol5">Coin 5 Symbol</label>
+                    <input name="symbol5" type="text" value = "btc"/><br>
+                    <label for="usdAmount5">How much would you like to "invest"?</label>
+                    <input name="usdAmount5" type="text">
+                </div><br>
+                <button type="submit" id="index-submit">Submit</button>
             </fieldset>
         </form>
         

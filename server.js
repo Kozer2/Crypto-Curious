@@ -72,16 +72,17 @@ function onFormSubmit(req, res) {
   ]).then(results => {
     let symbols = results.map( (result, i) => {
       let amount = cryptoAmounts[i];
-      console.log('amount', amount);
-      console.log('symbols', result.symbol);
-      console.log('Price', result.price);
+      // console.log('amount', amount);
+      // console.log('symbols', result.symbol);
+      // console.log('Price', result.price);
       return {
         symbol: result.symbol,
         price: result.price,
         bought: amount / result.price
       };
     });
-    console.log('symbols', symbols);
+    console.log('symbols', symbols[0].price);
+
     res.render('pages/crypto/cryptoResults.ejs',{symbols});
   })
     .catch(error => {
