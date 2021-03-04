@@ -3,16 +3,16 @@
 <body>
     <%- include('../../partials/header.ejs'); %>
 
-    <Section>
+    <section class="bankForm">
 
 
-        <h3>Here Are the Coins in the Bank</h3>
+        <h3>Here Are Users and the Coins They Have in the Bank</h3>
        
-        <% crypto.forEach( crypto => { %>
+        <% crypto.forEach( (crypto, i) => { %>
             <li class="userName">
-              <button class="show"> Username: <%= crypto.user_name %>  </button>
+              <button class="report"><a href="#details<%= i %>"> <%= crypto.user_name %> </a></button>
             </li>
-            <div class="<%= crypto.user_name %>">
+            <div class="details" id="details<%= i %>">
                 <br>
                 <li class="one">Time Searched: <%= crypto.time_date_stamp %></li>
                 <br>
@@ -52,16 +52,8 @@
                 </li>
                 <br>
             </div>
-            <script>
-                $(document).ready(function(){
-                    $("div").hide();
-                  $(".show").click(function(){
-                    $(".<%= crypto.user_name %>").show();
-                  });
-                });
-                </script>
         <% }) %>
                 
-        </Section>
+        </section>
         <script src="js/app.js"></script>
 </body>
