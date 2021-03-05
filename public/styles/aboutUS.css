@@ -7,10 +7,15 @@ body{
     background-size: 100%;
 }
 
-/* img{
-    height: 50%;
-    width: 250px;
-} */
+h2{
+  font-family: ;
+}
+img{
+    /* height: 300px;
+    width: 300px; */
+    border-radius: 50%;
+}
+
 
 /* Style the counter cards */
 
@@ -18,14 +23,18 @@ body{
     display: flex;
     justify-content: space-between;
     justify-items: auto;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
  }
 
 
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
-  padding: 50px;
+
+  padding: 70px;
+
   text-align: center;
-  background-color: 
+}
 
 /* Responsive columns - one column layout (vertical) on small screens */
 @media screen and (max-width: 600px) {
