@@ -33,7 +33,6 @@
     margin-left:20px;
     width:70%;
     background-image:url('../images/blockchain-3448529__340.webp');
-    
 }
 
 
@@ -41,6 +40,7 @@
     text-align: center;
 }
 .report{
+
     background-color: #000;
     color: rgb(13, 215, 230);
     margin: 5px;
@@ -64,4 +64,5 @@ ul{
 .details li{
     font-size: 24px;
     
+
 }
