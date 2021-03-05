@@ -15,9 +15,11 @@
     margin-right: 10px;
 }
 #index-submit{
-    margin-left: 50% ;
-    margin-left:50%;
+    padding: 20px;
+    margin-left: 50%;
     font-family: "Share Tech Mono", monospace;
+    font-size: 24px;
+    text-align: center;
 }
 .result {
     margin-top:10px;
@@ -31,4 +33,35 @@
     margin-left:20px;
     width:70%;
     background-image:url('../images/blockchain-3448529__340.webp');
+    
+}
+
+
+.bankForm{
+    text-align: center;
+}
+.report{
+    background-color: #000;
+    color: rgb(13, 215, 230);
+    margin: 5px;
+    background-color: #D0FFFD;
+    border-color: rgb(13, 215, 230);
+    text-decoration: none;
+}
+
+button a{
+    font-size: 25px;
+    text-decoration: none;
+}
+
+ul{
+    text-decoration: none;
+}
+
+.details{
+ background-color: rgba( 0, 0, 0, .8);
+ }
+.details li{
+    font-size: 24px;
+    
 }

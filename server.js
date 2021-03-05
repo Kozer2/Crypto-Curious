@@ -38,7 +38,7 @@ function getCryptoFromBank(req, res){
   client.query(SQL)
     .then( results => {
       const {rowCount, rows} = results;
-      console.log('Database Stuff', rows, rowCount);
+      // console.log('Database Stuff', rows, rowCount);
       res.render('pages/crypto/cryptoBank.ejs', {
         crypto: rows
       });
@@ -105,7 +105,7 @@ function onFormSubmit(req, res) {
       };
 
     }); // Database Setup
-    console.log('symbols', symbols);
+    // console.log('symbols', symbols);
     const query = 'INSERT INTO crypto_currency (user_name, symbol_name1, usd_price1, symbol_name2, usd_price2, symbol_name3, usd_price3, symbol_name4, usd_price4, symbol_name5, usd_price5, time_date_stamp) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)';
     const sqlArray = [userName,
       cryptoSymbol1, symbols[0].price,
@@ -132,8 +132,11 @@ function onFormSubmit(req, res) {
 
       res.status(500).send('Error, Coin symbol was not correct.');
     });
+  } // end onFormSubmit
 
-
+function openCoins(name){
+  console.log(name);
+}
 
   // console.log('url', url);
   // superagent.get(url)
@@ -154,7 +157,7 @@ function onFormSubmit(req, res) {
   //   res.status(500).send('Error, Coin symbol was not correct.');
 
   // });
-} // end onFormSubmit
+
 
 
 // function errorHandler(error, request, response) {
