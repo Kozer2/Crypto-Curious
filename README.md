@@ -18,4 +18,4 @@ Our problem domain was displaying up to 5 cryptocurriencies and display the amou
 
 
 
-Version 0.1
+Version 1.0.0
